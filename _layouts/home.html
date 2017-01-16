@@ -1,0 +1,63 @@
+---
+layout: default
+---
+<section class="cat-box recent-box recent-default">
+    <div class="cat-box-content">
+	{% for post in paginator.posts %}
+        <div class="recent-item tie_video">
+            <div class="post-thumbnail">
+                <a href="{{ post.url | relative_url }}" rel="bookmark"><img alt="7717834982_bbd7e12b8c_b" class="attachment-tie-medium size-tie-medium wp-post-image" height="165" src="https://themes.tielabs.com/sahifa/wp-content/uploads/sites/3/2015/01/7717834982_bbd7e12b8c_b-310x165.jpg" width="310"> <span class="fa overlay-icon"></span></a>
+            </div>
+            <h3 class="post-box-title"><a href="{{ post.url | relative_url }}" rel="bookmark">{{ post.title | escape }}</a></h3>
+        </div>
+	{% endfor %}
+        <div class="clear"></div>
+    </div>
+	{% if paginator.total_pages > 1 %}
+
+		{% assign start = paginator.page | minus: 2 %}
+		{% assign end = paginator.page | plus: 2 %}
+
+		{% if start < 1 %}
+			{% assign start = 1 %}
+			{% assign end = start | plus: 4 %}
+		{% elsif end > paginator.total_pages %}
+			{% assign start = paginator.total_pages | minus: 4 %}
+			{% assign end = paginator.total_pages %}
+		{% endif %}
+
+		{% if start < 1 %}
+			{% assign start = 1 %}
+		{% endif %}
+
+		{% if end > paginator.total_pages %}
+			{% assign end = paginator.total_pages %}
+		{% endif %}
+
+    <div class="pagination">
+	<span class="pages">Page {{ paginator.page }} of {{ paginator.total_pages }}</span>
+	{% if start > 1 %}
+	<a href="{{ site.url }}/" class="first" title="First">« First</a>
+	<span class="extend">&middot;&middot;&middot;</span>
+	{% endif %}
+	{% for page in (start..end) %}
+        {% if page == paginator.page %}
+          <span class="current">{{ page }}</span>
+        {% elsif page == 1 %}
+          <a href="{{ site.baseurl }}/">{{ page }}</a>
+        {% else %}
+          <a href="{{ site.baseurl }}/page/{{ page }}/">{{ page }}</a>
+        {% endif %}
+	  {% endfor %}
+	{% if paginator.next_page %}
+	<a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">»</a>
+	{% endif %}
+	{% if end < paginator.total_pages %}
+        <span class="extend">&middot;&middot;&middot;</span>
+	{% endif %}
+	{% if paginator.next_page %}
+	<a href="{{ site.baseurl }}/page/{{ paginator.total_pages }}/" class="last" title="Last">Last »</a>
+	{% endif %}
+	</div>
+	{% endif %}
+</section>

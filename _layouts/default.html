@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en-US" prefix="og: http://ogp.me/ns#">
+{% include head.html %}
+<body class="home page page-template-default lazy-enabled dark-skin" id="top">
+	<div class="wrapper-outer">
+		<div class="background-cover"></div>
+		<aside id="slide-out">
+			{% include search.html %}
+			<div id="mobile-menu"></div>
+		</aside>
+		<div class="boxed-all" id="wrapper">
+			<div class="inner-wrapper">
+				<header class="theme-header" id="theme-header">
+					{% include header.html %}
+				</header>
+				<div class="clear"></div>
+				<div class="container full-width" id="main-content">
+					<div class="content">
+						{{ content }}
+					</div>
+					<div class="clear"></div>
+				</div>
+				<footer id="theme-footer">
+					{% include footer.html %}
+				</footer>
+				<div class="clear"></div>
+				<div class="footer-bottom">
+					{% include copyright.html %}
+				</div>
+			</div>
+		</div>
+	</div>
+	{% include bottom.html %} 
+</body>
+</html>

@@ -1,0 +1,47 @@
+<div class="top-nav" id="top-nav">
+    <div class="container">
+        <div class="top-menu">
+            <ul class="menu" id="menu-top">
+			{% for page in site.pages %}
+				{% if page.title %}
+                <li><a href="{{ page.url | relative_url }}">{{ page.title | escape }}</a></li>
+				{% endif %}
+			{% endfor %}
+            </ul>
+        </div>
+        <div class="search-block">
+            <form action="https://themes.tielabs.com/sahifa/" id="searchform-header" method="get" name="searchform-header">
+                <button class="search-button" type="submit" value="Search"><i class="fa fa-search"></i></button>
+                <input class="search-live" id="s-header" name="s" onblur="if (this.value == '') {this.value = 'Search';}" onfocus="if (this.value == 'Search') {this.value = '';}" title="Search" type="text" value="Search">
+            </form>
+        </div>
+    </div>
+</div>
+<div class="header-content">
+    <a class="slide-out-open" href="#" id="slide-out-open"><span></span></a>
+    <div class="logo" style=" margin-top:15px; margin-bottom:15px;">
+        <h1><a href="{{ "/" | relative_url}}" title="{{ site.title | escape }}"><img alt="{{ site.title | escape }}" height="44" src="https://themes.tielabs.com/wp-content/uploads/sites/3/2015/01/logo.png" width="175"><strong>{{ site.title | escape }}</strong></a></h1>
+    </div>
+    <div class="e3lan e3lan-top">
+        <a href="http://themeforest.net/item/sahifa-responsive-wordpress-news-magazine-blog-theme/2819356?ref=tielabs" target="_blank" title=""><img alt="Buy Sahifa Theme Now" height="90" src="https://themes.tielabs.com/data/banners/sahifa5-ads.png" width="728"></a>
+    </div>
+    <div class="clear"></div>
+</div>
+<nav class="fixed-enabled" id="main-nav">
+    <div class="container">
+        <a class="main-nav-logo" href="{{ "/" | relative_url}}" title="{{ site.title | escape }}"><img alt="Sahifa" height="54" src="https://themes.tielabs.com/wp-content/uploads/sites/3/2015/01/nav-logo.png" width="195"></a>
+        <div class="main-menu">
+            <ul class="menu" id="menu-main-menu">
+                <li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home">
+                    <a href="{{ "/" | relative_url}}">Home</a>
+                </li>
+                <li class="menu-item menu-item-type-post_type menu-item-object-page">
+                    <a href="#"><i class="fa fa-shopping-cart"></i>Category</a>
+                </li>
+                <li class="menu-item menu-item-type-post_type menu-item-object-page">
+                    <a href="#"><i class="fa fa-shopping-cart"></i>Category</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

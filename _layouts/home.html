@@ -6,9 +6,9 @@ layout: default
 	{% for post in paginator.posts %}
         <div class="recent-item tie_video">
             <div class="post-thumbnail">
-                <a href="{{ post.url | relative_url }}" rel="bookmark"><img alt="7717834982_bbd7e12b8c_b" class="attachment-tie-medium size-tie-medium wp-post-image" height="165" src="https://themes.tielabs.com/sahifa/wp-content/uploads/sites/3/2015/01/7717834982_bbd7e12b8c_b-310x165.jpg" width="310"> <span class="fa overlay-icon"></span></a>
+                <a href="{{ post.url | relative_url }}" rel="bookmark"><img alt="{{ post.title }}" class="attachment-tie-medium size-tie-medium wp-post-image" height="165" src="{{ post.image }}" width="310"> <span class="fa overlay-icon"></span></a>
             </div>
-            <h3 class="post-box-title"><a href="{{ post.url | relative_url }}" rel="bookmark">{{ post.title | escape }}</a></h3>
+            <h3 class="post-box-title"><a href="{{ post.url | relative_url }}" rel="bookmark">{{ post.title | escape | truncate: 40 }}</a></h3>
         </div>
 	{% endfor %}
         <div class="clear"></div>

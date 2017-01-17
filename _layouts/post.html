@@ -4,7 +4,7 @@ layout: default
 <div id="main-content" class="container">
     <div class="post-cover-head">
         <div class="single-post-video">
-            <iframe src="//player.vimeo.com/video/23237102" width="660" height="371" frameborder="0" title="{{ page.title | escape }}"></iframe>
+			<div class="fluid-width-video-wrapper" style="padding-top: 56.2121%;"><iframe src="//api.tubex.ga/embed/watch?url={{ page.video | escape }}" title="{{ page.title | escape }}" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen="true" name="fitvid0" frameborder="0"></iframe></div>
         </div>
     </div>
     <div class="content post-cover">
@@ -16,92 +16,59 @@ layout: default
                     <span class="post-cats"><i class="fa fa-folder"></i><a href="{{ site.url }}/{{ page.category | slugify }}/" rel="category">{{ page.category }}</a></span>
                 <div class="clear"></div>
                 <div class="entry">
-                    <span class="dropcap ">D</span>on&#8217;t act so surprised, Your Highness. You weren&#8217;t on any mercy mission this time. Several transmissions were beamed to this ship by Rebel spies. I want to know what happened to the plans they sent you. In my experience, there is no such thing as luck. Partially, but it also obeys your commands. I want to come with you to Alderaan. There&#8217;s nothing for me here now. I want to learn the ways of the Force and be a Jedi, like my father before me. The more you tighten your grip, Tarkin, the more star systems will slip through your fingers.</p>
-                    <p>Still, she&#8217;s got a lot of spirit. I don&#8217;t know, what do you think? What!? I don&#8217;t know what you&#8217;re talking about. I am a member of the Imperial Senate on a diplomatic mission to Alderaan&#8211; What good is a reward if you ain&#8217;t around to use it? Besides, attacking that battle station ain&#8217;t my idea of courage. It&#8217;s more like…suicide.</p>
-                    <p>You don&#8217;t believe in the Force, do you? Obi-Wan is here. The Force is with him. I call it luck. Look, I can take you as far as Anchorhead. You can get a transport there to Mos Eisley or wherever you&#8217;re going. What?! The Force is strong with this one. I have you now.</p>                    
+                    {{ content }}
                 </div>
                 <div class="clear"></div>
             </div>
         </article>
-        <p class="post-tag">Tags <a href="https://themes.tielabs.com/sahifa/tag/article/" rel="tag">Article</a> <a href="https://themes.tielabs.com/sahifa/tag/author/" rel="tag">Author</a> <a href="https://themes.tielabs.com/sahifa/tag/post/" rel="tag">Post</a> <a href="https://themes.tielabs.com/sahifa/tag/video/" rel="tag">Video</a></p>
+        <p class="post-tag">Tags 
+		{% for tag in page.tags %}
+		<a href="{{ site.url }}/tags/{{ tag | slugify }}/" rel="tag">{{ tag }}</a>
+		{% endfor %}
+		</p>
         <section id="related_posts">
             <div class="block-head">
                 <h3>Related Videos</h3>
                 <div class="stripe-line"></div>
             </div>
             <div class="post-listing">
+			{% assign maxRelated = 6 %}
+			{% assign minCommonTags =  2 %}
+			{% assign maxRelatedCounter = 0 %}
+				{% for post in site.posts %}
+					{% assign sameTagCount = 0 %}
+					{% assign commonTags = '' %}
+					{% for tag in post.tags %}
+						{% if post.url != page.url %}
+							{% if page.tags contains tag %}
+								{% assign sameTagCount = sameTagCount | plus: 1 %}
+								{% assign commonTags = commonTags | append: tagmarkup %}
+							{% endif %}
+						{% endif %}
+					{% endfor %}
+					{% if sameTagCount >= minCommonTags %}
                 <div class="related-item tie_video">
                     <div class="post-thumbnail">
-                        <a href="https://themes.tielabs.com/sahifa/2015/01/26/top-search-engine-optimization-strategies-explained/">
-                            <img width="310" height="165" src="https://themes.tielabs.com/sahifa/wp-content/uploads/sites/3/2015/01/NmnKzKIyQsyGIkFjiNsb_20140717_212636-3-310x165.jpg" class="attachment-tie-medium size-tie-medium wp-post-image" alt="NmnKzKIyQsyGIkFjiNsb_20140717_212636-3" /> <span class="fa overlay-icon"></span>
+                        <a href="{{ site.baseurl }}{{ post.url }}">
+                            <img width="310" height="165" src="{{post.image}}" class="attachment-tie-medium size-tie-medium wp-post-image" alt="{{ post.title }}" /> <span class="fa overlay-icon"></span>
                         </a>
                     </div>
-                    <h3><a href="https://themes.tielabs.com/sahifa/2015/01/26/top-search-engine-optimization-strategies-explained/" rel="bookmark">Top Search Engine Optimization Strategies!</a></h3>
-                    <p class="post-meta"><span class="tie-date"><i class="fa fa-clock-o"></i>Jan 26, 2015</span></p>
+                    <h3><a href="{{ site.baseurl }}{{ post.url }}" rel="bookmark">{{ post.title }}</a></h3>
                 </div>
-                <div class="related-item tie_video">
-                    <div class="post-thumbnail">
-                        <a href="https://themes.tielabs.com/sahifa/2015/01/26/top-search-engine-optimization-strategies-explained/">
-                            <img width="310" height="165" src="https://themes.tielabs.com/sahifa/wp-content/uploads/sites/3/2015/01/NmnKzKIyQsyGIkFjiNsb_20140717_212636-3-310x165.jpg" class="attachment-tie-medium size-tie-medium wp-post-image" alt="NmnKzKIyQsyGIkFjiNsb_20140717_212636-3" /> <span class="fa overlay-icon"></span>
-                        </a>
-                    </div>
-                    <h3><a href="https://themes.tielabs.com/sahifa/2015/01/26/top-search-engine-optimization-strategies-explained/" rel="bookmark">Top Search Engine Optimization Strategies!</a></h3>
-                    <p class="post-meta"><span class="tie-date"><i class="fa fa-clock-o"></i>Jan 26, 2015</span></p>
-                </div>
-                <div class="related-item tie_video">
-                    <div class="post-thumbnail">
-                        <a href="https://themes.tielabs.com/sahifa/2015/01/26/top-search-engine-optimization-strategies-explained/">
-                            <img width="310" height="165" src="https://themes.tielabs.com/sahifa/wp-content/uploads/sites/3/2015/01/NmnKzKIyQsyGIkFjiNsb_20140717_212636-3-310x165.jpg" class="attachment-tie-medium size-tie-medium wp-post-image" alt="NmnKzKIyQsyGIkFjiNsb_20140717_212636-3" /> <span class="fa overlay-icon"></span>
-                        </a>
-                    </div>
-                    <h3><a href="https://themes.tielabs.com/sahifa/2015/01/26/top-search-engine-optimization-strategies-explained/" rel="bookmark">Top Search Engine Optimization Strategies!</a></h3>
-                    <p class="post-meta"><span class="tie-date"><i class="fa fa-clock-o"></i>Jan 26, 2015</span></p>
-                </div>
-                <div class="related-item tie_video">
-                    <div class="post-thumbnail">
-                        <a href="https://themes.tielabs.com/sahifa/2015/01/26/top-search-engine-optimization-strategies-explained/">
-                            <img width="310" height="165" src="https://themes.tielabs.com/sahifa/wp-content/uploads/sites/3/2015/01/NmnKzKIyQsyGIkFjiNsb_20140717_212636-3-310x165.jpg" class="attachment-tie-medium size-tie-medium wp-post-image" alt="NmnKzKIyQsyGIkFjiNsb_20140717_212636-3" /> <span class="fa overlay-icon"></span>
-                        </a>
-                    </div>
-                    <h3><a href="https://themes.tielabs.com/sahifa/2015/01/26/top-search-engine-optimization-strategies-explained/" rel="bookmark">Top Search Engine Optimization Strategies!</a></h3>
-                    <p class="post-meta"><span class="tie-date"><i class="fa fa-clock-o"></i>Jan 26, 2015</span></p>
-                </div>
-                <div class="related-item tie_video">
-                    <div class="post-thumbnail">
-                        <a href="https://themes.tielabs.com/sahifa/2014/09/24/are-you-still-using-that-slow-old-typewriter/">
-                            <img width="310" height="165" src="https://themes.tielabs.com/sahifa/wp-content/uploads/sites/3/2015/01/7998125906_4489ed8a2f_b-310x165.jpg" class="attachment-tie-medium size-tie-medium wp-post-image" alt="7998125906_4489ed8a2f_b" /> <span class="fa overlay-icon"></span>
-                        </a>
-                    </div>
-                    <h3><a href="https://themes.tielabs.com/sahifa/2014/09/24/are-you-still-using-that-slow-old-typewriter/" rel="bookmark">Are You Still Using That Slow, Old Typewriter?</a></h3>
-                    <p class="post-meta"><span class="tie-date"><i class="fa fa-clock-o"></i>Sep 24, 2014</span></p>
-                </div>
-                <div class="related-item tie_video">
-                    <div class="post-thumbnail">
-                        <a href="https://themes.tielabs.com/sahifa/2014/07/24/10000-web-site-visitors-in-one-monthguaranteed/">
-                            <img width="310" height="165" src="https://themes.tielabs.com/sahifa/wp-content/uploads/sites/3/2015/01/girl-310x165.jpg" class="attachment-tie-medium size-tie-medium wp-post-image" alt="girl" /> <span class="fa overlay-icon"></span>
-                        </a>
-                    </div>
-                    <h3><a href="https://themes.tielabs.com/sahifa/2014/07/24/10000-web-site-visitors-in-one-monthguaranteed/" rel="bookmark">10,000 Web Site Visitors In One Month:Guaranteed</a></h3>
-                    <p class="post-meta"><span class="tie-date"><i class="fa fa-clock-o"></i>Jul 24, 2014</span></p>
-                </div>
+				{% assign maxRelatedCounter = maxRelatedCounter | plus: 1 %}
+				{% if maxRelatedCounter >= maxRelated %}
+					{% break %}
+				{% endif %}
+			{% endif %}
+			{% endfor %}
                 <div class="clear"></div>
             </div>
         </section>
     </div>
     <aside id="sidebar">
         <div class="theiaStickySidebar">
-			<div id="ads300_250-widget-2" class="e3lan-widget-content e3lan300-250">
-				<div class="e3lan-cell">
-				<a href="http://themeforest.net/item/sahifa-responsive-wordpress-news-magazine-blog-theme/2819356?ref=tielabs" title="" target="_blank">
-				<img src="https://themes.tielabs.com/data/banners/sahifa-300.jpg" alt="Buy Now" class="tie-appear" width="300" height="250"></a>
-				</div>
-			</div>
-			<div id="ads300_250-widget-2" class="e3lan-widget-content e3lan300-250">
-				<div class="e3lan-cell">
-				<a href="http://themeforest.net/item/sahifa-responsive-wordpress-news-magazine-blog-theme/2819356?ref=tielabs" title="" target="_blank">
-				<img src="https://themes.tielabs.com/data/banners/sahifa-300.jpg" alt="Buy Now" class="tie-appear" width="300" height="250"></a>
-				</div>
-			</div>
+			{% include ads300.html %}
+			{% include ads300.html %}
         </div>
     </aside>
     <div class="clear"></div>
